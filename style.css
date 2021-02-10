@@ -16,7 +16,7 @@ body {
 header {
   width: 702px;
   margin: 0 auto;
-  padding: 19px 25px;
+  padding: 18px 23px 15px 28px;
   border: 2px solid #606e85;
   border-radius: 15px;
   display: flex;
@@ -27,14 +27,13 @@ header {
 header .score {
   width: 150px;
   height: 114px;
-  padding: 13px;
+  padding: 14px;
   background: #ffffff;
   border-radius: 6px;
   text-align: center;
 }
 
 header .score h3 {
-  margin-top: 3px;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
@@ -58,12 +57,99 @@ main {
   flex-grow: 1;
 }
 
+#playmat {
+  width: 305px;
+  height: 277px;
+  margin: 154px auto;
+  position: relative;
+}
+
+#playmat .token {
+  font-size: 19.7px;
+}
+
+#playmat .token.user-picked {
+  font-size: 29px;
+  top: 5%;
+  left: -60%;
+  transform: scale(1);
+  transition: ease-in 0.3s;
+  cursor: initial;
+}
+
+#playmat .token.user-picked::before {
+  content: "YOU PICKED";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  top: -32%;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.125em;
+}
+
+#playmat .token.user-picked.aside {
+  transition: ease-out 1s;
+  left: -107%;
+}
+
+#playmat .token.computer-picked {
+  font-size: 29px;
+  top: 5%;
+  left: 60%;
+  transform: scale(1);
+  cursor: initial;
+}
+
+#playmat .token.computer-picked::before {
+  content: "THE HOUSE PICKED";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  top: -32%;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.125em;
+}
+
+#playmat .token.computer-picked.aside {
+  transition: ease-out 1s;
+  left: 104%;
+}
+
+#playmat .token--paper {
+  top: -32%;
+  left: -28%;
+}
+
+#playmat .token--scissors {
+  top: -32%;
+  left: 63%;
+}
+
+#playmat .token--rock {
+  left: 18%;
+  top: 50%;
+}
+
+#playmat .winner {
+  box-shadow: 0 0 0 65px rgba(255, 255, 255, 0.03), 0 0 0 135px rgba(255, 255, 255, 0.02), 0 0 0 218px rgba(255, 255, 255, 0.01);
+}
+
 .token {
   font-size: 10px;
   border-radius: 50%;
   width: 10em;
   height: 10.3em;
-  position: relative;
+  position: absolute;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.token:hover {
+  transform: scale(1.03);
 }
 
 .token__center {
@@ -74,7 +160,7 @@ main {
   border-radius: 50%;
   width: 7.665em;
   height: 7.716em;
-  box-shadow: inset 0 0.8em 0.1em #b9bed4;
+  box-shadow: inset 0 0.4em 0.1em #b9bed4;
 }
 
 .token__center--scissors img {
@@ -85,14 +171,39 @@ main {
   top: 1.996em;
 }
 
+.token__center--paper img {
+  position: absolute;
+  width: 3.4em;
+  height: 4.2em;
+  left: 2.03em;
+  top: 1.93em;
+}
+
+.token__center--rock img {
+  position: absolute;
+  width: 3.3em;
+  height: 3.4em;
+  left: 2.2em;
+  top: 2.4em;
+}
+
 .token__border {
+  position: absolute;
   width: 10em;
   height: 9.848em;
   border-radius: 50%;
 }
 
 .token__border--scissors {
-  background: linear-gradient(#cf9d3f, #eca922);
+  background: linear-gradient(#eca922, #cf9d3f);
+}
+
+.token__border--paper {
+  background: linear-gradient(#5671f5, #4865f4);
+}
+
+.token__border--rock {
+  background: linear-gradient(#dd405d, #dc2e4e);
 }
 
 .token__shadow {
@@ -102,11 +213,82 @@ main {
   left: 0;
   top: 0;
   border-radius: 50%;
-  z-index: -1;
 }
 
 .token__shadow--scissors {
   background: #c76c1b;
+}
+
+.token__shadow--paper {
+  background: #2945c1;
+}
+
+.token__shadow--rock {
+  background: #a11737;
+}
+
+.token-placeholder {
+  position: absolute;
+  font-size: 29px;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  width: 7.6em;
+  height: 7.6em;
+  border-radius: 50%;
+  top: 17%;
+  left: 72%;
+  background: black;
+  opacity: 0.1;
+  transform: scale(0);
+}
+
+.result {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+  opacity: 0;
+  transition: ease-in 1s;
+}
+
+.result h4 {
+  font-weight: bold;
+  font-size: 57px;
+  color: white;
+  margin-top: 1.35em;
+  text-transform: uppercase;
+}
+
+.result p {
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.045em;
+  margin-top: 6px;
+}
+
+.result .play-again {
+  width: 220px;
+  height: 48px;
+  background: white;
+  border-radius: 8px;
+  margin: 80px auto 0;
+  color: #3b4363;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 48px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.155em;
+}
+
+.result .play-again:hover {
+  color: #dd4040;
+  cursor: pointer;
 }
 
 footer {
@@ -116,5 +298,19 @@ footer {
 
 footer a {
   color: #3e52a3;
+}
+
+.hidden {
+  display: none;
+}
+
+.reveal {
+  transform: scale(1);
+  transition: ease-out 2s;
+}
+
+.appear {
+  z-index: 0;
+  opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
