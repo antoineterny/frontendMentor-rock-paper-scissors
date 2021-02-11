@@ -59,12 +59,13 @@ const resetPlaymat = () => {
   result = document.querySelector(".result")
 
   allTokens.forEach(token => {
-    token.addEventListener("click", () => selectToken(token))
+    token.addEventListener("click", playGame)
   })
   document.querySelector(".play-again").onclick = resetPlaymat
 }
 
-const selectToken = token => {
+const playGame = () => {
+  const token = document.querySelector(`.token--${player}`)
   allTokens.forEach(t => {
     t.classList.add("hidden")
   })
@@ -89,7 +90,7 @@ const selectToken = token => {
       <div class="token__center token__center--${computer}">
         <img src="./images/icon-${computer}.svg" alt="${computer}" />
       </div>`
-
+    token.removeEventListener('click', playGame)
     document.querySelector(".token-placeholder span").innerText = "2"
     setTimeout(() => {
       document.querySelector(".token-placeholder span").innerText = "1"
