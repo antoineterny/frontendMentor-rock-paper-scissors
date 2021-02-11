@@ -47,7 +47,7 @@ const resetPlaymat = () => {
       </div>
     </div>
     <img src="./images/bg-triangle.svg" alt="" />
-    <div class="token-placeholder"></div>
+    <div class="token-placeholder"><span>3</span></div>
   `
   paper = document.querySelector(".token--paper")
   paper.onclick = () => (player = "paper")
@@ -59,7 +59,7 @@ const resetPlaymat = () => {
   result = document.querySelector(".result")
 
   allTokens.forEach(token => {
-    token.addEventListener("click", () => selectToken(token, "user"))
+    token.addEventListener("click", () => selectToken(token))
   })
   document.querySelector(".play-again").onclick = resetPlaymat
 }
@@ -89,32 +89,36 @@ const selectToken = token => {
       <div class="token__center token__center--${computer}">
         <img src="./images/icon-${computer}.svg" alt="${computer}" />
       </div>`
-    playmat.appendChild(computerToken)
-    document.querySelector(".token-placeholder").classList.remove("reveal")
+
+    document.querySelector(".token-placeholder span").innerText = "2"
     setTimeout(() => {
-      document.querySelector(".user-picked").classList.add("aside")
-      document.querySelector(".computer-picked").classList.add("aside")
-      if (player === computer) {
-        console.log("tie")
-        result.querySelector("h4").innerHTML = "it's a tie"
-      } else if (wins[player][computer]) {
-        console.log(`player wins: ${player} ${wins[player][computer]} ${computer}`)
-        result.querySelector("h4").innerHTML = "you win"
-        result.querySelector("p").innerHTML = `${player} ${wins[player][computer]} ${computer}`
-        document.querySelector(".user-picked").classList.add("winner")
-        score++
-        scoreDisplay.innerHTML = score
-      } else {
-        console.log("computer wins")
-        result.querySelector("h4").innerHTML = "you lose"
-        result.querySelector("p").innerHTML = `${computer} ${wins[computer][player]} ${player}`
-        document.querySelector(".computer-picked").classList.add("winner")
-        score = score > 0 ? score - 1 : 0
-        scoreDisplay.innerHTML = score
-      }
+      document.querySelector(".token-placeholder span").innerText = "1"
       setTimeout(() => {
-        result.classList.add("appear")
-      }, 200)
-    }, 500)
-  }, 2000)
+        document.querySelector(".token-placeholder").classList.remove("reveal")
+        playmat.appendChild(computerToken)
+        setTimeout(() => {
+          document.querySelector(".user-picked").classList.add("aside")
+          document.querySelector(".computer-picked").classList.add("aside")
+          if (player === computer) {
+            result.querySelector("h4").innerHTML = "it's a tie"
+          } else if (wins[player][computer]) {
+            result.querySelector("h4").innerHTML = "you win"
+            result.querySelector("p").innerHTML = `${player} ${wins[player][computer]} ${computer}`
+            document.querySelector(".user-picked").classList.add("winner")
+            score++
+            scoreDisplay.innerHTML = score
+          } else {
+            result.querySelector("h4").innerHTML = "you lose"
+            result.querySelector("p").innerHTML = `${computer} ${wins[computer][player]} ${player}`
+            document.querySelector(".computer-picked").classList.add("winner")
+            score = score > 0 ? score - 1 : 0
+            scoreDisplay.innerHTML = score
+          }
+          setTimeout(() => {
+            result.classList.add("appear")
+          }, 200)
+        }, 100)
+      }, 600)
+    }, 600)
+  }, 600)
 }

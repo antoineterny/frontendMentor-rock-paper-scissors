@@ -116,7 +116,7 @@ main {
 
 #playmat .token.computer-picked.aside {
   transition: ease-out 1s;
-  left: 104%;
+  left: 114%;
 }
 
 #playmat .token--paper {
@@ -241,6 +241,13 @@ main {
   background: black;
   opacity: 0.1;
   transform: scale(0);
+  color: white;
+  line-height: 7.6em;
+  text-align: center;
+}
+
+.token-placeholder span {
+  font-size: 4em;
 }
 
 .result {
