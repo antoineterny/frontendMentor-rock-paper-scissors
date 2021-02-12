@@ -58,14 +58,14 @@ main {
 }
 
 #playmat {
-  width: 305px;
-  height: 277px;
-  margin: 154px auto;
+  width: 329px;
+  height: 313px;
+  margin: 122px auto;
   position: relative;
 }
 
 #playmat .token {
-  font-size: 19.7px;
+  font-size: 14.5px;
 }
 
 #playmat .token.user-picked {
@@ -120,18 +120,28 @@ main {
 }
 
 #playmat .token--paper {
-  top: -32%;
-  left: -28%;
+  top: 17.8%;
+  left: 78%;
 }
 
 #playmat .token--scissors {
-  top: -32%;
-  left: 63%;
+  top: -23.7%;
+  left: 28.2%;
 }
 
 #playmat .token--rock {
-  left: 18%;
-  top: 50%;
+  left: 58%;
+  top: 77.3%;
+}
+
+#playmat .token--lizard {
+  left: -1.9%;
+  top: 77.3%;
+}
+
+#playmat .token--spock {
+  top: 17.8%;
+  left: -21.9%;
 }
 
 #playmat .winner {
@@ -187,6 +197,22 @@ main {
   top: 2.4em;
 }
 
+.token__center--lizard img {
+  position: absolute;
+  width: 4.3em;
+  height: 4.1em;
+  left: 1.7em;
+  top: 2em;
+}
+
+.token__center--spock img {
+  position: absolute;
+  width: 3.1em;
+  height: 4em;
+  left: 2.5em;
+  top: 1.9em;
+}
+
 .token__border {
   position: absolute;
   width: 10em;
@@ -204,6 +230,14 @@ main {
 
 .token__border--rock {
   background: linear-gradient(#dd405d, #dc2e4e);
+}
+
+.token__border--lizard {
+  background: linear-gradient(#8c5de5, #834fe3);
+}
+
+.token__border--spock {
+  background: linear-gradient(#52bed1, #40b9ce);
 }
 
 .token__shadow {
@@ -225,6 +259,14 @@ main {
 
 .token__shadow--rock {
   background: #a11737;
+}
+
+.token__shadow--lizard {
+  background: #5f38aa;
+}
+
+.token__shadow--spock {
+  background: #2e8eab;
 }
 
 .token-placeholder {

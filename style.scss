@@ -66,12 +66,16 @@ main {
 }
 
 #playmat {
-  width: 305px;
-  height: 277px;
-  margin: 154px auto;
+  // width: 305px;
+  // height: 277px;
+  // margin: 154px auto;
+  width: 329px;
+  height: 313px;
+  margin: 122px auto;
   position: relative;
   .token {
-    font-size: 19.7px;
+    // font-size: 19.7px;
+    font-size: 14.5px;
     // SELECTED TOKEN
     &.user-picked {
       font-size: 29px;
@@ -119,16 +123,30 @@ main {
       }
     }
     &--paper {
-      top: -32%;
-      left: -28%;
+      // top: -32%;
+      // left: -28%;
+      top: 17.8%;
+      left: 78%;
     }
     &--scissors {
-      top: -32%;
-      left: 63%;
+      // top: -32%;
+      // left: 63%;
+      top: -23.7%;
+      left: 28.2%;
     }
     &--rock {
-      left: 18%;
-      top: 50%;
+      // left: 18%;
+      // top: 50%;
+      left: 58%;
+      top: 77.3%;
+    }
+    &--lizard {
+      left: -1.9%;
+      top: 77.3%;
+    }
+    &--spock {
+      top: 17.8%;
+      left: -21.9%;
     }
   }
   .winner {
@@ -178,6 +196,20 @@ main {
       left: 2.2em;
       top: 2.4em;
     }
+    &--lizard img {
+      position: absolute;
+      width: 4.3em;
+      height: 4.1em;
+      left: 1.7em;
+      top: 2em;
+    }
+    &--spock img {
+      position: absolute;
+      width: 3.1em;
+      height: 4em;
+      left: 2.5em;
+      top: 1.9em;
+    }
   }
   &__border {
     position: absolute;
@@ -192,6 +224,12 @@ main {
     }
     &--rock {
       background: $rock-gradient;
+    }
+    &--lizard {
+      background: $lizard-gradient;
+    }
+    &--spock {
+      background: $spock-gradient;
     }
   }
   &__shadow {
@@ -209,6 +247,12 @@ main {
     }
     &--rock {
       background: #a11737;
+    }
+    &--lizard {
+      background: #5f38aa;
+    }
+    &--spock {
+      background: #2e8eab;
     }
   }
 }
@@ -295,6 +339,6 @@ footer {
 }
 
 .appear {
-  z-index:0;
+  z-index: 0;
   opacity: 1;
 }
