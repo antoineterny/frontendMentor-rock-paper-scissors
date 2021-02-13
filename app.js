@@ -13,6 +13,19 @@ const wins = {
 
 const playmat = document.querySelector("#playmat")
 const scoreDisplay = document.querySelector(".score p")
+const rules = document.querySelector(".rules")
+const rulesBtn = document.querySelector(".rules-button")
+const rulesModal = document.querySelector(".rules__modal")
+const closeBtn = document.querySelector(".rules__modal__header img")
+rulesBtn.onclick = () => rules.classList.remove("hidden")
+closeBtn.onclick = () => rules.classList.add("hidden")
+rules.onclick = e => {
+  console.log(e.target)
+  if (!rulesModal.contains(e.target)) {
+    rules.classList.add("hidden")
+  }
+}
+
 window.onload = () => {
   scoreDisplay.innerHTML = score
   resetPlaymat()
@@ -111,7 +124,7 @@ const playGame = () => {
       <div class="token__center token__center--${computer}">
         <img src="./images/icon-${computer}.svg" alt="${computer}" />
       </div>`
-    token.removeEventListener('click', playGame)
+    token.removeEventListener("click", playGame)
     document.querySelector(".token-placeholder span").innerText = "2"
     setTimeout(() => {
       document.querySelector(".token-placeholder span").innerText = "1"
