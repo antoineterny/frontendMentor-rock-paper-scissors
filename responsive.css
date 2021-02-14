@@ -97,9 +97,11 @@
   }
   .rules__modal > img {
     width: calc(100vw - 72px);
+    max-width: 400px;
     position: absolute;
     top: calc(50vh);
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
   }
   .rules__modal__header {
     flex-direction: column;

@@ -20,6 +20,7 @@ $spock-gradient: linear-gradient(hsl(189, 58%, 57%), hsl(189, 59%, 53%));
 body {
   min-height: 100vh;
   max-width: 1428px;
+  min-width: 375px;
   margin: 0 auto;
   padding: 47px 31px 31px 31px;
   background: radial-gradient(100% 100% at 50% 0%, #1f3756 0%, #141539 100%);
